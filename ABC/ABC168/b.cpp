@@ -15,15 +15,11 @@ int main() {
   string S;
   cin >> S;
   int s_len = S.length();
-  vector<char> ans(K);
-
-  REP(i, K) ans[i] = S[i];
 
   if (s_len > K) {
-    REP(i, K) cout << ans[i];
+    REP(i, K) cout << S[i];
     cout << "..." << endl;
   } else {
-    REP(i, K) cout << ans[i];
-    cout << endl;
+    cout << S << endl;
   }
 }
