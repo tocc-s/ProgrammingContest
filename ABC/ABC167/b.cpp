@@ -15,6 +15,25 @@ template <class T> void CO(T value) { cout << value << endl; }
 #pragma endregion
 
 int main() {
-  
-  
+  int A, B, C, K;
+  cin >> A >> B >> C >> K;
+
+  ll cnt = 0;
+
+  REP(i, K) {
+    if (A > 0) {
+      cnt++;
+      A--;
+      continue;
+    } else if (B > 0) {
+      B--;
+      continue;
+    } else if (C > 0) {
+      cnt--;
+      C--;
+      continue;
+    }
+  }
+
+  CO(cnt);
 }
