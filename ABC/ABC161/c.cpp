@@ -25,11 +25,13 @@ int main() {
     return 0;
   }
 
-  if (N > K) {
-    while (N > K) {
-      N -= K;
-    }
-  }
+  /*TLE*/
+  // if (N > K) {
+  //   while (N > K) {
+  //     N -= K;
+  //   }
+  // }
+  N = N % K;
   if (N == 0 || K == 1 || N == K) {
     CO(0);
     return 0;
