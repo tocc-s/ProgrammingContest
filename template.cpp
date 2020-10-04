@@ -5,8 +5,10 @@ using namespace std;
 #pragma region defines
 using ll = long long;
 using pll = pair<ll, ll>;
-constexpr ll INF = 1e18;
 constexpr ll MOD = 1e9 + 7;
+constexpr ll LINF = 1e18;
+constexpr int IINF = 1e9;
+constexpr double PI = 3.14159265358979323846;
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REPR(i, n) for (int i = n; i >= 0; i--)
 #define FOR(i, m, n) for (int i = m; i < n; i++)
