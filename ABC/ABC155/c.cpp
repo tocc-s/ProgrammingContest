@@ -1,0 +1,45 @@
+#pragma region includes
+#include <bits/stdc++.h>
+using namespace std;
+#pragma endregion
+#pragma region defines
+using ll = long long;
+using pll = pair<ll, ll>;
+constexpr ll INF = 1e18;
+constexpr ll MOD = 1e9 + 7;
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define REPR(i, n) for (int i = n; i >= 0; i--)
+#define FOR(i, m, n) for (int i = m; i < n; i++)
+#define ALL(v) v.begin(), V.end()
+template <class T>
+void CO(T value) {
+  cout << value << endl;
+}
+#pragma endregion
+
+int main() {
+  int N;
+  cin >> N;
+  string S;
+  map<string, int> dict;
+
+  REP(i, N) {
+    cin >> S;
+    if (!dict.count(S)) {
+      dict[S] = 1;
+    } else {
+      dict[S]++;
+    }
+  }
+  int max = -1;
+  for (auto itr = dict.begin(); itr != dict.end(); itr++) {
+    if(itr->second > max) max = itr->second;
+    // cout << "key = " << itr->first << ", value = " << itr->second << endl;
+  }
+  
+  for (auto itr = dict.begin(); itr != dict.end(); itr++) {
+    if(itr->second == max) {
+      CO(itr->first);
+    }
+  }
+}
