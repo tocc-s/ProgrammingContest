@@ -14,7 +14,7 @@ constexpr double PI = 3.14159265358979323846;
 #define REPR(i, n) for (int i = n; i >= 0; i--)
 #define FOR(i, m, n) for (int i = m; i < n; i++)
 #define FORR(v, vec) for (auto const& v : vec)
-#define ALL(v) v.begin(), V.end()
+#define ALL(v) v.begin(), v.end()
 template <class T>
 void CO(T value) { cout << value << endl; }
 #pragma endregion
