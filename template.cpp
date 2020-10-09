@@ -3,10 +3,12 @@
 using namespace std;
 #pragma endregion
 #pragma region defines
-using ll = long long;
-using pll = pair<ll, ll>;
-constexpr ll MOD = 1e9 + 7;
-constexpr ll LINF = 1e18;
+using LL = long long;
+using PLL = pair<LL, LL>;
+using OVEC = vector<int>;
+using TVEC = vector<vector<int>>;
+constexpr LL MOD = 1e9 + 7;
+constexpr LL LINF = 1e18;
 constexpr int IINF = 1e9;
 constexpr double PI = 3.14159265358979323846;
 #define REP(i, n) for (int i = 0; i < n; i++)
@@ -17,11 +19,12 @@ constexpr double PI = 3.14159265358979323846;
 #define FORR(v, vec) for (auto const& v : vec)
 #define ALL(v) v.begin(), v.end()
 template <class T>
-void CO(T value) { cout << value << endl; }
+void CO(T value) {
+  cout << value << endl;
+}
 #pragma endregion
 
 int main() {
   // cout << fixed << setprecision(15);
-  
   
 }
