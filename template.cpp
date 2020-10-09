@@ -13,6 +13,7 @@ constexpr double PI = 3.14159265358979323846;
 #define REPE(i, n) for (int i = 0; i <= n; i++)
 #define REPR(i, n) for (int i = n; i >= 0; i--)
 #define FOR(i, m, n) for (int i = m; i < n; i++)
+#define FORE(i, m, n) for (int i = m; i <= n; i++)
 #define FORR(v, vec) for (auto const& v : vec)
 #define ALL(v) v.begin(), v.end()
 template <class T>
