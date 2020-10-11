@@ -60,7 +60,7 @@ int bfs(int sy, int sx, int gy, int gx) {
 
       if (0 > nx || nx >= w || 0 > ny || ny >= h) continue;  //範囲外判定
       if (field[ny][nx] == '#') continue;                    //壁判定
-      if (dist[ny][nx] != IINF) continue;                    //到達判定(IINFであれば到達済み)
+      if (dist[ny][nx] != IINF) continue;                    //到達判定(IINFでなければ到達済み)
 
       /* 移動可能であれば */
       que.push(P(ny, nx)); // 移動可能座標をqueにpush
