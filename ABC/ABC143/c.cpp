@@ -18,15 +18,31 @@ constexpr double PI = 3.14159265358979323846;
 #define FORE(i, m, n) for (int i = m; i <= n; i++)
 #define FORR(v, vec) for (auto const& v : vec)
 #define ALL(v) v.begin(), v.end()
-#define SETPRE(n) cout << fixed << setprecision(n)
 template <class T>
 void CO(T value) {
   cout << value << endl;
 }
-void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
-void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
+void string_lower(string& s, int n) {
+  s[n] = s[n] + ('a' - 'A');
+}
+void string_upper(string& s, int n) {
+  s[n] = s[n] - ('a' - 'A');
+}
 #pragma endregion
 
 int main() {
+  // cout << fixed << setprecision(15);
+  int n;
+  string s;
+  cin >> n >> s;
   
+  vector<char> ans;
+  ans.push_back(s[0]);
+  FOR(i, 1, n) {
+    if(s[i-1] != s[i]) ans.push_back(s[i]);
+  }
+
+  // REP(i, ans.size()) cout << ans[i];
+  // CO("");
+  CO(ans.size());
 }

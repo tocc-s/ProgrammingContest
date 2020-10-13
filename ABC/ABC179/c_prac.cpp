@@ -18,15 +18,31 @@ constexpr double PI = 3.14159265358979323846;
 #define FORE(i, m, n) for (int i = m; i <= n; i++)
 #define FORR(v, vec) for (auto const& v : vec)
 #define ALL(v) v.begin(), v.end()
-#define SETPRE(n) cout << fixed << setprecision(n)
 template <class T>
 void CO(T value) {
   cout << value << endl;
 }
-void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
-void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
+void string_lower(string& s, int n) {
+  s[n] = s[n] + ('a' - 'A');
+}
+void string_upper(string& s, int n) {
+  s[n] = s[n] - ('a' - 'A');
+}
 #pragma endregion
 
 int main() {
-  
+  // cout << fixed << setprecision(15);
+  int n, cnt = 0;
+  cin >> n;
+
+  // a*b+c = n
+  // 正整数なのでa, bの初期値は1
+  // cはa*bの組み合わせが決まれば1通りに絞られるため、n未満だけa*bの通りをカウントする a*b = n-c :(cは1)
+  for(int a = 1; a < n; a++) {
+    for(int b = 1; a*b < n; b++) {
+      cnt++;
+    }
+  }
+
+  CO(cnt);
 }
