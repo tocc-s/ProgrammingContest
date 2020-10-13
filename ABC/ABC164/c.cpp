@@ -30,7 +30,9 @@ void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
 int main() {
   int n;
   cin >> n;
-  set<string> s; // 重複をさせないように集合を作る
+  /* setよりunordered_setの方がソートされない分速い */
+  unordered_set<string> s; // 重複をさせないように集合を作る
+
   REP(i, n) {
     string tmp;
     cin >> tmp;
