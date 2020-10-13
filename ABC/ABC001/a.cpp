@@ -22,15 +22,11 @@ template <class T>
 void CO(T value) {
   cout << value << endl;
 }
-void string_lower(string& s, int n) {
-  s[n] = s[n] + ('a' - 'A');
-}
-void string_upper(string& s, int n) {
-  s[n] = s[n] - ('a' - 'A');
-}
 #pragma endregion
 
 int main() {
   // cout << fixed << setprecision(15);
-  
+  int h1, h2;
+  cin >> h1 >> h2;
+  CO(h1-h2);
 }

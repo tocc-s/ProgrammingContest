@@ -22,15 +22,28 @@ template <class T>
 void CO(T value) {
   cout << value << endl;
 }
-void string_lower(string& s, int n) {
-  s[n] = s[n] + ('a' - 'A');
-}
-void string_upper(string& s, int n) {
-  s[n] = s[n] - ('a' - 'A');
-}
 #pragma endregion
 
 int main() {
   // cout << fixed << setprecision(15);
-  
+  string s;
+  cin >> s;
+  int n = s.size(), nfront = (n - 1) / 2;
+  vector<char> s_tmp(n), s_tmp2(nfront);
+
+  REP(i, n) { s_tmp[n - 1 - i] = s[i]; }
+  REP(i, nfront) { s_tmp2[nfront - 1 - i] = s[i]; }
+
+  bool flag1 = true, flag2 = true;
+  REP(i, n) {
+    if (s[i] != s_tmp[i]) flag1 = false;
+  }
+  REP(i, nfront) {
+    if (s[i] != s_tmp2[i]) flag2 = false;
+  }
+
+  if (flag1 && flag2)
+    CO("Yes");
+  else
+    CO("No");
 }

@@ -18,19 +18,24 @@ constexpr double PI = 3.14159265358979323846;
 #define FORE(i, m, n) for (int i = m; i <= n; i++)
 #define FORR(v, vec) for (auto const& v : vec)
 #define ALL(v) v.begin(), v.end()
+#define gcd __gcd
 template <class T>
 void CO(T value) {
   cout << value << endl;
-}
-void string_lower(string& s, int n) {
-  s[n] = s[n] + ('a' - 'A');
-}
-void string_upper(string& s, int n) {
-  s[n] = s[n] - ('a' - 'A');
 }
 #pragma endregion
 
 int main() {
   // cout << fixed << setprecision(15);
-  
+  int n;
+  cin >> n;
+
+  int ans = 0, a;
+  /* ユークリッドの互除法が使える */
+  // 0 <= x <= yなるx, yについてgcd(x, y) = gcd(x, y-x)が成り立つ
+  REP(i, n) {
+    cin >> a;
+    ans = gcd(ans, a);
+  }
+  CO(ans);
 }
