@@ -5,8 +5,10 @@ using namespace std;
 #pragma region defines
 using LL = long long;
 using PLL = pair<LL, LL>;
-using OVEC = vector<int>;
-using TVEC = vector<vector<int>>;
+using VEC = vector<int>;
+using GRAPH = vector<vector<int>>;
+using PQ = priority_queue<int>;
+using RPQ = priority_queue<int, vector<int>, greater<int>>;
 constexpr LL MOD = 1e9 + 7;
 constexpr LL LINF = 1e18;
 constexpr int IINF = 1e9;
