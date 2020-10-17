@@ -33,5 +33,15 @@ void CO(T value) {
 #pragma endregion
 
 int main() {
-  
+  int n;
+  cin >> n;
+  vector<int> d(n);
+  REP(i, n) cin >> d[i];
+  sort(ALL(d));
+  // REP(i, n) cout << d[i] << " ";
+
+  int half = d.size() / 2;
+  int cnt;
+  cnt = d[half] - d[half-1];
+  CO(cnt);
 }
