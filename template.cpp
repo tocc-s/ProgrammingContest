@@ -17,7 +17,7 @@ using RPQ = priority_queue<int, vector<int>, greater<int>>;
 #define REPR(i, n) for (int i = n; i >= 0; i--)
 #define FOR(i, m, n) for (int i = m; i < n; i++)
 #define FORE(i, m, n) for (int i = m; i <= n; i++)
-#define FORR(v, vec) for (auto const& v : vec)
+#define FORR(itr, dict) for (auto itr = dict.begin(); itr != dict.end(); itr++)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
 constexpr LL MOD = 1e9 + 7;
