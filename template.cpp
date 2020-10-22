@@ -1,3 +1,4 @@
+#pragma region Region
 #pragma region includes
 #include <bits/stdc++.h>
 using namespace std;
@@ -31,6 +32,7 @@ void CO(T value) {
   cout << value << endl;
 }
 #pragma endregion
+#pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
 
