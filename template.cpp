@@ -21,7 +21,7 @@ using RPQ = priority_queue<int, vector<int>, greater<int>>;
 #define FORR(itr, dict) for (auto itr = dict.begin(); itr != dict.end(); itr++)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
-constexpr LL MOD = 1e9 + 7;
+constexpr int MOD = 1e9 + 7;
 constexpr LL LINF = 1e18;
 constexpr int IINF = 1e9;
 constexpr double PI = 3.14159265358979323846;
@@ -37,5 +37,5 @@ void CO(T value) {
 
 
 int main() {
-  
+
 }
