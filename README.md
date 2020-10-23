@@ -1,6 +1,9 @@
 # 競プロ用
 ## 説明
+
 競プロ初心者の練習用リポジトリ
+[AtCoder](https://atcoder.jp/users/tocc)
+[AtCoder Ploblems](https://kenkoooo.com/atcoder/#/table/tocc)
 
 ## 使用言語
 
