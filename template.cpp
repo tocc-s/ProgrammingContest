@@ -29,7 +29,7 @@ void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
 void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
 template <class T>
 void CO(T value) {
-  cout << value << endl;
+  cout << value << "\n";
 }
 #pragma endregion
 #pragma endregion Region
