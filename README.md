@@ -3,7 +3,7 @@
 
 競プロ初心者の練習用リポジトリ
 
-本格開始日: 2020/09/21
+本格開始日: 2020/08/21
 
 > [AtCoder (tocc)](https://atcoder.jp/users/tocc)
 
