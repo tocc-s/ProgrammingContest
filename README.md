@@ -5,9 +5,9 @@
 
 本格開始日: 2020/08/21
 
-> [AtCoder (tocc)](https://atcoder.jp/users/tocc)
+> <a href="https://atcoder.jp/users/tocc" target="_blank">AtCoder (tocc)</a>
 
-> [AtCoder Problems (tocc)](https://kenkoooo.com/atcoder/#/table/tocc)
+> <a href="https://kenkoooo.com/atcoder/#/table/tocc" target="_blank">AtCoder Problems (tocc)</a>
 
 ## 使用言語
 - C++
