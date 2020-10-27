@@ -1,9 +1,15 @@
 #pragma region Region
-#pragma region includes
+#pragma region Fasts
+#pragma GCC optimize("Ofast")
+#define FAST                   \
+  ios::sync_with_stdio(false); \
+  cin.tie(nullptr);
+#pragma endregion
+#pragma region Includes
 #include <bits/stdc++.h>
 using namespace std;
 #pragma endregion
-#pragma region defines
+#pragma region Defines
 using LL = long long;
 template <class T>
 using P = pair<T, T>;
@@ -35,7 +41,7 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
-
 int main() {
+  FAST
   
 }
