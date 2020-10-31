@@ -31,9 +31,9 @@ using RPQ = priority_queue<int, vector<int>, greater<int>>;
 #define FORR(itr, dict) for (auto& itr : dict)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
+constexpr LL LLINF = LLONG_MAX;
+constexpr int IINF = INT_MAX;
 constexpr int MOD = 1e9 + 7;
-constexpr LL LINF = 1e18;
-constexpr int IINF = 1e9;
 constexpr double PI = 3.14159265358979323846;
 void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
 void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
