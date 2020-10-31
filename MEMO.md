@@ -1,5 +1,14 @@
 # 競プロメモ
 
+## 考察
+ > [**ABC174 / C - Repsept**](https://atcoder.jp/contests/abc174/tasks/abc174_c)
+ - 余りが同じであれば同じ数とみなせる。
+ - mod (合同式) を上手く使う。
+##  
+ > [**ABC174 / E - Logs**](https://atcoder.jp/contests/abc174/tasks/abc174_e)
+ - 最大値の最小化問題
+   - 二分探索
+
 ## 計算量
  - 制約: `n <= 10^9`
    - nまでの二重ループ以上はほぼ無理。
