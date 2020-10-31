@@ -1,13 +1,17 @@
 #pragma region Region
-#pragma region Fasts
+#pragma region Includes
+#include <bits/stdc++.h>
+using namespace std;
+#pragma endregion
+#pragma region Setting
 #pragma GCC optimize("Ofast")
 #define FAST                   \
   ios::sync_with_stdio(false); \
   cin.tie(nullptr);
-#pragma endregion
-#pragma region Includes
-#include <bits/stdc++.h>
-using namespace std;
+#define CLS clock_t start = clock();
+#define CLE              \
+  clock_t end = clock(); \
+  cout << end - start << " ms" << '\n';
 #pragma endregion
 #pragma region Defines
 using LL = long long;
@@ -41,7 +45,7 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() {
+int main() { 
   FAST;
-  
+
 }
