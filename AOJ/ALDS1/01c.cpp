@@ -45,31 +45,30 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
-void prime_check(int n) {
-  VEC<int> primes;
+void prime_check(VEC<int> nums) {
+  int cnt = 0;
   bool notprime = false;
 
-  FOR(i, 2, n) {  // 2 から n まで素数判定を行う ( 1 は素数ではないので 2 から)
-    /* ~2 から その数-1まで ( 1 とその数自身以外)~ */
-    FORE(j, 2, sqrt(i)) {  // 合成数の性質により、2 から √x までについて割り切れるかどうかを調べれば十分らしい    
-      if (i % 2 == 0 || i % j == 0) {   // もしも偶数、または割り切れるなら
+  REP(i, nums.size()) {  
+    FORE(j, 2, sqrt(nums[i])) {  // 2 から その数-1まで ( 1 とその数自身以外)
+      if (nums[i] % 2 == 0 || nums[i] % j == 0) {   // もしも割り切れるなら
         notprime = true;  // 素数ではない
         break;
       };
     }
-    if (!notprime) primes.emplace_back(i);
+    if (!notprime) cnt++;
     notprime = false;
   }
 
-  REP(i, primes.size()) CO(primes[i]);
+  CO(cnt);
 }
 
 int main() {
-  CLS;
   FAST;
   int n;
   cin >> n;
+  VEC<int> nums(n);
+  REP(i, n) cin >> nums[i];
 
-  prime_check(n);
-  CLE;
+  prime_check(nums);
 }
