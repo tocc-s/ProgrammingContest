@@ -9,6 +9,8 @@
 
 > <a href="https://kenkoooo.com/atcoder/#/table/tocc" target="_blank">AtCoder Problems (tocc)</a>
 
+> <a href="https://onlinejudge.u-aizu.ac.jp/status/users/tocc" target="_blank">AOJ (tocc)</a>
+
 ## 使用言語
 - C++
 
