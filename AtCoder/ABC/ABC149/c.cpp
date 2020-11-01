@@ -46,7 +46,6 @@ void CO(T value) {
 ///////////////////////////////////////////////////////////////////////////////
 
 void prime_check(int n) {
-  VEC<int> primes;
   bool notprime = false;
 
   for(int i = n; i <= 100003; i++) {  // 2 から n まで素数判定を行う ( 1 は素数ではないので 2 から)
@@ -62,8 +61,6 @@ void prime_check(int n) {
     }
     notprime = false;
   }
-
-  // REP(i, primes.size()) CO(primes[i]);
 }
 
 int main() { 
