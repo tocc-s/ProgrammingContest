@@ -47,14 +47,14 @@ void CO(T value) {
 
 /* 最大公約数 */
 template<class T> 
-int gcd(T x, T y) {
+T gcd(T x, T y) {
   if (x % y == 0) return y;
   else return gcd(y, x % y);
 }
 
 /* 最小公倍数 */
 template<class T> 
-int lcm(T x, T y) {
+T lcm(T x, T y) {
   return x * y / gcd(x, y);
 }
 
