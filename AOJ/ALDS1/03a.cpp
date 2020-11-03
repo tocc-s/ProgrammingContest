@@ -53,6 +53,33 @@ int main() {
   FAST;
   stack<int> st;
 
+  /* 正解解答例 */
+  // string s;
+  // while (cin >> s) {
+  //   if (s == "+") {
+  //     int a = st.top();
+  //     st.pop();
+  //     int b = st.top();
+  //     st.pop();
+  //     st.push(a + b);
+  //   } else if (s == "-") {
+  //     int a = st.top();
+  //     st.pop();
+  //     int b = st.top();
+  //     st.pop();
+  //     st.push(b - a);
+  //   } else if (s == "*") {
+  //     int a = st.top();
+  //     st.pop();
+  //     int b = st.top();
+  //     st.pop();
+  //     st.push(b * a);
+  //   } else {
+  //     st.push(stoi(s));
+  //   }
+  // }
+  // CO(st.top());
+
   string s;
   getline(cin, s);
   VEC<string> c;
@@ -76,7 +103,8 @@ int main() {
 
   REP(i, c.size()) {
     if (c[i][0] == ' ') continue;
-    if (!(c[i][0] == '+' || c[i][0] == '-' || c[i][0] == '*')) {  //数字なら stack に格納
+    if (!(c[i][0] == '+' || c[i][0] == '-' ||
+          c[i][0] == '*')) {  //数字なら stack に格納
       st.push(stoi(c[i]));
     }
     if (c[i][0] == '+') {

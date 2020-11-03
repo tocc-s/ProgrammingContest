@@ -52,6 +52,7 @@ int gcd(T x, T y) {
   else return gcd(y, x % y);
 }
 
+/* 最小公倍数 */
 template<class T> 
 int lcm(T x, T y) {
   return x * y / gcd(x, y);
