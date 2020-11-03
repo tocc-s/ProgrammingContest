@@ -46,7 +46,42 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
+int main() {
   FAST;
+  int ans = -IINF, mul;
+  string s, rev;
+  bool flag = false;
+  VEC<int> tmpi, tmpj;
+  FREV(i, 999, 913) {
+    FREV(j, 999, 913) {
+      mul = i * j;
 
+      s = to_string(mul);
+      rev = s;
+      REP(i, s.size()) { rev[i] = s[s.size() - 1 - i]; }
+
+      if (s == rev) {
+        ans = max(ans, mul);
+        flag = true;
+        if (mul == 906609) {
+          tmpi.emplace_back(i);
+          tmpj.emplace_back(j);
+        }
+      }
+      CO(i);
+    }
+  }
+
+  CO("");
+  REP(i, tmpi.size()) {
+    cout << "i: " << tmpi[i] << " / j: " << tmpj[i] << '\n';
+  }
+  CO("");
+  cout << "ans: " << ans << "\n";
+
+  /* これらの組み合わせのみ */
+  // i: 993 / j: 913
+  // i: 913 / j: 993
+
+  // ans: 906609
 }

@@ -28,7 +28,6 @@ using RPQ = priority_queue<int, vector<int>, greater<int>>;
 #define REPR(i, n) for (int i = n; i >= 0; i--)
 #define FOR(i, m, n) for (int i = m; i < n; i++)
 #define FORE(i, m, n) for (int i = m; i <= n; i++)
-#define FREV(i, m, n) for (int i = m; i >= n; i--)
 #define FORR(itr, dict) for (auto& itr : dict)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
@@ -46,7 +45,18 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
+int main() {
   FAST;
+  int n;
+  cin >> n;
+  VEC<int> r(n);
+  REP(i, n) cin >> r[i];
 
+  int maxv = -IINF, minv = r[0];
+  FOR(i, 1, n) {
+    maxv = max(maxv, r[i] - minv);
+    minv = min(minv, r[i]);
+  }
+
+  CO(maxv);
 }
