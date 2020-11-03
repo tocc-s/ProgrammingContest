@@ -52,10 +52,16 @@ int gcd(T x, T y) {
   else return gcd(y, x % y);
 }
 
+template<class T> 
+int lcm(T x, T y) {
+  return x * y / gcd(x, y);
+}
+
 int main() { 
   FAST;
-  int x, y;
-  cin >> x >> y;
+  int gcd_x, gcd_y, lcm_x, lcm_y;
+  cin >> gcd_x >> gcd_y >> lcm_x >> lcm_y;
   
-  CO(gcd(x, y));
+  CO(gcd(gcd_x, gcd_y));
+  CO(lcm(lcm_x, lcm_y));
 }

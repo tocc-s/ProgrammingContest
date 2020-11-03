@@ -46,13 +46,8 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
-void insertionSort(VEC<int> a, int n) {
-  REP(i, n) {
-    if (i < n - 1)
-      cout << a[i] << " ";
-    else
-      CO(a[i]);
-  }
+/* 挿入ソート */
+VEC<int> insertionSort(VEC<int> a, int n) {
   FOR(i, 1, n) {
     int v = a[i];
     int j = i - 1;
@@ -61,13 +56,8 @@ void insertionSort(VEC<int> a, int n) {
       j--;
     }
     a[j + 1] = v;
-    REP(i, n) {
-      if (i < n - 1)
-        cout << a[i] << " ";
-      else
-        CO(a[i]);
-    }
   }
+  return a;
 }
 
 int main() {
@@ -77,5 +67,13 @@ int main() {
   VEC<int> a(n);
   REP(i, n) cin >> a[i];
 
-  insertionSort(a, n);
+  VEC<int> sorted(n);
+  sorted = insertionSort(a, n);
+
+  REP(i, n) {
+    if (i < n - 1)
+      cout << sorted[i] << " ";
+    else
+      CO(sorted[i]);
+  }
 }
