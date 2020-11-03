@@ -45,14 +45,11 @@ void CO(T value) {
 #pragma endregion Region
 ///////////////////////////////////////////////////////////////////////////////
 
+/* 最大公約数 */
 template<class T> 
 int gcd(T x, T y) {
-  T tmp;
   if (x % y == 0) return y;
-  else {
-    tmp = x % y;
-    return gcd(y, tmp);
-  }
+  else return gcd(y, x % y);
 }
 
 int main() { 
