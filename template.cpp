@@ -58,6 +58,7 @@ int ctoi(char c) {
     return -1;
   }
 }
+char itoc(int n) { return n + '0'; }
 #pragma endregion Functions
 
 #pragma endregion Template
