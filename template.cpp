@@ -1,8 +1,10 @@
-#pragma region Region
+#pragma region Template
+
 #pragma region Includes
 #include <bits/stdc++.h>
 using namespace std;
-#pragma endregion
+#pragma endregion Includes
+
 #pragma region Setting
 #pragma GCC optimize("Ofast")
 #define FAST                   \
@@ -12,7 +14,8 @@ using namespace std;
 #define CLE              \
   clock_t end = clock(); \
   cout << end - start << " ms" << '\n';
-#pragma endregion
+#pragma endregion Setting
+
 #pragma region Defines
 using LL = long long;
 template <class T>
@@ -32,21 +35,32 @@ using RPQ = priority_queue<int, vector<int>, greater<int>>;
 #define FORR(itr, dict) for (auto& itr : dict)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
+#define en '\n'
 constexpr LL LLINF = LLONG_MAX;
 constexpr int IINF = INT_MAX;
 constexpr int MOD = 1e9 + 7;
 constexpr double PI = 3.14159265358979323846;
+#pragma endregion Defines
+
+#pragma region Functions
 void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
 void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
 template <class T>
 void CO(T value) {
-  cout << value << "\n";
+  out << value << en;
 }
-#pragma endregion
-#pragma endregion Region
+void CO(void) { cout << en; }
+int ctoi(char c) {
+  if ('0' <= c && c <= '9')
+    return (c - '0');
+  else {
+    CO("ctoi error!");
+    return -1;
+  }
+}
+#pragma endregion Functions
+
+#pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
-  FAST;
-
-}
+int main() { FAST; }
