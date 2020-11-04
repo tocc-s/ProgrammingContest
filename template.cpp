@@ -47,7 +47,7 @@ void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
 void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
 template <class T>
 void CO(T value) {
-  out << value << en;
+  cout << value << en;
 }
 void CO(void) { cout << en; }
 int ctoi(char c) {
@@ -63,4 +63,7 @@ int ctoi(char c) {
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { FAST; }
+int main() { 
+  FAST; 
+  
+}
