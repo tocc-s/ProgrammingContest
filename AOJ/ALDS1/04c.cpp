@@ -2,6 +2,7 @@
 
 #pragma region Includes
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 #pragma endregion Includes
 
@@ -64,40 +65,26 @@ char itoc(int n) { return n + '0'; }
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-constexpr int NOT_FOUND = -1;
+int main() { 
+  FAST; 
+  unordered_set<string> dict;
+  string command[2] = {"insert", "find"};
 
-template <class T>
-int binary_search(VEC<T> a, T key) {
-  int left = 0, right = a.size(), mid;
-  while (left < right) {
-    mid = (left + right) / 2;
-    if (a[mid] == key)
-      return mid;
-    else if (a[mid] > key)
-      right = mid;
-    else
-      left = mid + 1;
-  }
-
-  return NOT_FOUND;
-}
-
-int main() {
-  FAST;
-  int n, q;
+  int n;
   cin >> n;
-  VEC<int> s(n);
-  REP(i, n) cin >> s[i];
-  cin >> q;
-
-  sort(ALL(s));
-  
-  int ans = 0;
-  REP(i, q) {
-    int t;
-    cin >> t;
-    if (binary_search(s, t) != NOT_FOUND) ans++;
+  VEC<bool> ans;
+  REP(i, n) {
+    string c, v;
+    cin >> c >> v;
+    if(c == command[0]) dict.insert(v);
+    else if(c == command[1]) {
+      if(dict.count(v)) ans.emplace_back(true);
+      else ans.emplace_back(false);
+    }
   }
 
-  CO(ans);
+  REP(i, ans.size()) {
+    if(ans[i]) CO("yes");
+    else CO("no");
+  }
 }

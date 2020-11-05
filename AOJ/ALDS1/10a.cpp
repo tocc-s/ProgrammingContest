@@ -64,40 +64,15 @@ char itoc(int n) { return n + '0'; }
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-constexpr int NOT_FOUND = -1;
-
-template <class T>
-int binary_search(VEC<T> a, T key) {
-  int left = 0, right = a.size(), mid;
-  while (left < right) {
-    mid = (left + right) / 2;
-    if (a[mid] == key)
-      return mid;
-    else if (a[mid] > key)
-      right = mid;
-    else
-      left = mid + 1;
-  }
-
-  return NOT_FOUND;
-}
-
 int main() {
   FAST;
-  int n, q;
+  int n;
   cin >> n;
-  VEC<int> s(n);
-  REP(i, n) cin >> s[i];
-  cin >> q;
 
-  sort(ALL(s));
-  
-  int ans = 0;
-  REP(i, q) {
-    int t;
-    cin >> t;
-    if (binary_search(s, t) != NOT_FOUND) ans++;
-  }
+  VEC<int> fib(n + 1);
+  fib[0] = 1;
+  fib[1] = 1;
+  FORE(i, 2, n) fib[i] = fib[i - 1] + fib[i - 2];
 
-  CO(ans);
+  CO(fib[n]);
 }
