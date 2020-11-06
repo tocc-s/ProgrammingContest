@@ -69,10 +69,12 @@ int main() {
   int n;
   cin >> n;
 
+  // 問題の影響で 0 項目から
+  // fib[0] == 0 fib[1] == 1 fib[2] == 2 fib[3] == 3 ~
   VEC<int> fib(n + 1);
-  fib[0] = 1;
+  fib[0] = 0;
   fib[1] = 1;
-  FORE(i, 2, n) fib[i] = fib[i - 1] + fib[i - 2];
+  FORE(i, 2, n + 1) fib[i] = fib[i - 1] + fib[i - 2];
 
-  CO(fib[n]);
+  CO(fib[n + 1]);
 }
