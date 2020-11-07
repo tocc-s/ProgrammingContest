@@ -80,4 +80,18 @@ inline bool chmax(T& a, T b) {
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { FAST; }
+int main() {
+  FAST;
+  int n, k;
+  cin >> n >> k;
+  VEC<int> h(n);
+  VEC<int> dp(n + 100, IINF);  // DPテーブル: 余裕をもって確保
+  REP(i, n) cin >> h[i];
+
+  dp[0] = 0;
+  REP(i, n) {
+    FORE(j, 1, k) { chmin(dp[i + j], dp[i] + abs(h[i] - h[i + j])); }
+  }
+
+  CO(dp[n - 1]);
+}
