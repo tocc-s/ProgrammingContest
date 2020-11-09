@@ -77,7 +77,7 @@ inline bool chmax(T& a, T b) {
 }
 template <class T>
 inline bool int_chk(T n) {
-  if (ceil(tmp) == floor(tmp)) return true;
+  if (ceil(n) == floor(n)) return true;
   return false;
 }
 #pragma endregion Functions
@@ -86,8 +86,25 @@ inline bool int_chk(T n) {
 ///////////////////////////////////////////////////////////////////////////////
 
 void solve() {
-  int n;
-  cin >> n;
+  int n, d;
+  cin >> n >> d;
+  VEC2<int> x(n, VEC<int>(d));
+  REP(i, n) REP(j, d) cin >> x[i][j];
+
+  int cnt = 0;
+  REP(i, n) {    
+    FOR(j, i+1, n) {
+      double tmp = 0;
+      REP(k, d) {
+        double t;
+        t = x[i][k] - x[j][k];
+        tmp += pow(t, 2);
+      }    
+      tmp = sqrt(tmp);
+      if(int_chk(tmp)) cnt++; // 整数判定
+    }
+  }
+  CO(cnt);
 }
 
 int main() {
