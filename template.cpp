@@ -20,8 +20,10 @@ template <class T>
 using VEC = vector<T>;
 template <class T>
 using VEC2 = vector<vector<T>>;
-using PQ = priority_queue<int>;
-using RPQ = priority_queue<int, vector<int>, greater<int>>;
+template <class T>
+using PQ = priority_queue<T>;
+template <class T>
+using RPQ = priority_queue<T, vector<T>, greater<T>>;
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REPE(i, n) for (int i = 0; i <= n; i++)
 #define REPR(i, n) for (int i = n; i >= 0; i--)
@@ -46,12 +48,12 @@ void string_upper(string& s, int n) {
   if (s[n] >= 97 && s[n] <= 122) s[n] = s[n] - ('a' - 'A');
 }
 template <class T>
-void CO(T value) {
+inline void CO(T value) {
   cout << value << en;
 }
-void CO(void) { cout << en; }
+inline void CO(void) { cout << en; }
 template <class T>
-void CON(T value) {
+inline void CON(T value) {
   cout << value;
 }
 int ctoi(char c) {
