@@ -50,6 +50,10 @@ void CO(T value) {
   cout << value << en;
 }
 void CO(void) { cout << en; }
+template <class T>
+void CON(T value) {
+  cout << value;
+}
 int ctoi(char c) {
   if ('0' <= c && c <= '9')
     return (c - '0');
@@ -77,7 +81,7 @@ inline bool chmax(T& a, T b) {
 }
 template <class T>
 inline bool int_chk(T n) {
-  if (ceil(tmp) == floor(tmp)) return true;
+  if (ceil(n) == floor(n)) return true;
   return false;
 }
 #pragma endregion Functions
