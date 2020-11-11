@@ -15,21 +15,21 @@ void YorN(bool flag) {
 }
 
 int main() {
-  int N, W;
-  cin >> N >> W;
-  vector<int> a(N);
-  for (int i = 0; i < N; i++) cin >> a[i];
+  int n, w;
+  cin >> n >> w;
+  vector<int> a(n);
+  for (int i = 0; i < n; i++) cin >> a[i];
 
   // i < (1 << N): 選ばれている数を2^N通り全探索
   bool flag = false;
-  for (int i = 0; i < (1 << N); i++) {
+  for (int bit = 0; bit < (1 << n); bit++) {
     int sum = 0;
-    for (int j = 0; j < N; j++) {
+    for (int i = 0; i < n; i++) {
       // iを2進数表記で表した時、j番目にbitが立っていたら
-      if (i & (1 << j)) sum += a[j];
+      if (bit & (1 << i)) sum += a[i];
     }
 
-    if (sum == W) flag = true;
+    if (sum == w) flag = true;
   }
 
   YorN(flag);
