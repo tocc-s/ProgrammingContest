@@ -10,10 +10,6 @@ using namespace std;
 #define FAST                   \
   ios::sync_with_stdio(false); \
   cin.tie(nullptr);
-#define CLS clock_t start = clock();
-#define CLE              \
-  clock_t end = clock(); \
-  cout << end - start << " ms" << '\n';
 #pragma endregion Setting
 
 #pragma region Defines
@@ -43,8 +39,12 @@ constexpr double PI = 3.14159265358979323846;
 #pragma endregion Defines
 
 #pragma region Functions
-void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
-void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
+void string_lower(string& s, int n) {
+  if (s[n] >= 65 && s[n] <= 90) s[n] = s[n] + ('a' - 'A');
+}
+void string_upper(string& s, int n) {
+  if (s[n] >= 97 && s[n] <= 122) s[n] = s[n] - ('a' - 'A');
+}
 template <class T>
 void CO(T value) {
   cout << value << en;
@@ -80,13 +80,18 @@ inline bool chmax(T& a, T b) {
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
-  FAST; 
-  int n, ans = -IINF;
-  cin >> n;
-  VEC<int> a(n);
+void solve() {
+  int n, m;
+  cin >> n >> m;
 
-  // REP(i, n) {
-  //   ans = max(ans, );
-  // }  
+  for (int bit = 0; bit < (1 << n); bit++) {
+    for (int i = 0; i < n; i++) {
+
+    }
+  }
+}
+
+int main() {
+  FAST;
+  solve();
 }

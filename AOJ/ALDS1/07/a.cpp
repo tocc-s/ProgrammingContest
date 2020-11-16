@@ -80,13 +80,12 @@ inline bool chmax(T& a, T b) {
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
-  FAST; 
-  int n, ans = -IINF;
+void solve() {
+  int n;
   cin >> n;
-  VEC<int> a(n);
+}
 
-  // REP(i, n) {
-  //   ans = max(ans, );
-  // }  
+int main() {
+  FAST;
+  solve();
 }

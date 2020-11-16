@@ -80,13 +80,16 @@ inline bool chmax(T& a, T b) {
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
-  FAST; 
-  int n, ans = -IINF;
-  cin >> n;
-  VEC<int> a(n);
+void solve() {
+  string s;
+  cin >> s;
+  int n = s.size();
+  VEC<int> c(3, 0); // 0 ~ 9 を 3 で割った余りは 0 ~ 2 しかない
+  REP(i, n) c[(s[i] - '0') % 3]++;
 
-  // REP(i, n) {
-  //   ans = max(ans, );
-  // }  
+}
+
+int main() {
+  FAST;
+  solve();
 }

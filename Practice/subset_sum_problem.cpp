@@ -23,7 +23,7 @@ using P = pair<T, T>;
 template <class T>
 using VEC = vector<T>;
 template <class T>
-using VEC2 = vector<vector<T>>;
+using GRAPH = vector<vector<T>>;
 using PQ = priority_queue<int>;
 using RPQ = priority_queue<int, vector<int>, greater<int>>;
 #define REP(i, n) for (int i = 0; i < n; i++)
@@ -80,13 +80,15 @@ inline bool chmax(T& a, T b) {
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
-  FAST; 
-  int n, ans = -IINF;
+int main() {
+  FAST;
+  int n, a;
   cin >> n;
-  VEC<int> a(n);
+  VEC<int> arr(n);
+  GRAPH<int> dp(n, VEC<int>(n, IINF));
+  REP(i, n) cin >> arr[i];
+  cin >> a;
 
-  // REP(i, n) {
-  //   ans = max(ans, );
-  // }  
+  
+
 }

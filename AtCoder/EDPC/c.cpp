@@ -82,11 +82,13 @@ inline bool chmax(T& a, T b) {
 
 int main() { 
   FAST; 
-  int n, ans = -IINF;
+  int n;
   cin >> n;
-  VEC<int> a(n);
+  VEC2<int> a(n, VEC<int>(3));
+  REP(i, n) REP(j, 3) cin >> a[i][j];
 
-  // REP(i, n) {
-  //   ans = max(ans, );
-  // }  
+  VEC2<int> dp(n, VEC<int>(3));
+  dp[0][0] = 0;
+
+  
 }

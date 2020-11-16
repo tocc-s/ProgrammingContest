@@ -10,10 +10,6 @@ using namespace std;
 #define FAST                   \
   ios::sync_with_stdio(false); \
   cin.tie(nullptr);
-#define CLS clock_t start = clock();
-#define CLE              \
-  clock_t end = clock(); \
-  cout << end - start << " ms" << '\n';
 #pragma endregion Setting
 
 #pragma region Defines
@@ -24,8 +20,10 @@ template <class T>
 using VEC = vector<T>;
 template <class T>
 using VEC2 = vector<vector<T>>;
-using PQ = priority_queue<int>;
-using RPQ = priority_queue<int, vector<int>, greater<int>>;
+template <class T>
+using PQ = priority_queue<T>;
+template <class T>
+using RPQ = priority_queue<T, vector<T>, greater<T>>;
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REPE(i, n) for (int i = 0; i <= n; i++)
 #define REPR(i, n) for (int i = n; i >= 0; i--)
@@ -43,13 +41,21 @@ constexpr double PI = 3.14159265358979323846;
 #pragma endregion Defines
 
 #pragma region Functions
-void string_lower(string& s, int n) { s[n] = s[n] + ('a' - 'A'); }
-void string_upper(string& s, int n) { s[n] = s[n] - ('a' - 'A'); }
+void string_lower(string& s, int n) {
+  if (s[n] >= 65 && s[n] <= 90) s[n] = s[n] + ('a' - 'A');
+}
+void string_upper(string& s, int n) {
+  if (s[n] >= 97 && s[n] <= 122) s[n] = s[n] - ('a' - 'A');
+}
 template <class T>
-void CO(T value) {
+inline void CO(T value) {
   cout << value << en;
 }
-void CO(void) { cout << en; }
+inline void CO(void) { cout << en; }
+template <class T>
+inline void CON(T value) {
+  cout << value;
+}
 int ctoi(char c) {
   if ('0' <= c && c <= '9')
     return (c - '0');
@@ -75,18 +81,33 @@ inline bool chmax(T& a, T b) {
   }
   return false;
 }
+template <class T>
+inline bool int_chk(T n) {
+  if (ceil(n) == floor(n)) return true;
+  return false;
+}
 #pragma endregion Functions
 
 #pragma endregion Template
 ///////////////////////////////////////////////////////////////////////////////
 
-int main() { 
-  FAST; 
-  int n, ans = -IINF;
-  cin >> n;
-  VEC<int> a(n);
+void solve() {
+  int x;
+  cin >> x;
+  stack<int> ans;
 
-  // REP(i, n) {
-  //   ans = max(ans, );
-  // }  
+  FORE(i, 1, x) {
+    double tmp = sqrt(i);
+    if(ceil(tmp) == floor(tmp)) {
+      ans.push(i);
+    }
+  }
+
+  CO(ans.top());
+  CO(sqrt(512));
+}
+
+int main() {
+  FAST;
+  solve();
 }
