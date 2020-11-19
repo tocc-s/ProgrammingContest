@@ -85,7 +85,7 @@ void solve() {
       cin >> v;
       v--;
       adj[u].emplace_back(v);
-      // G[v].emplace_back(u); // 無向グラフであれば追加 (今回は有効グラフ)
+      // G[v].emplace_back(u); // 無向グラフであれば追加 (今回は有向グラフ)
     }
   }
 
