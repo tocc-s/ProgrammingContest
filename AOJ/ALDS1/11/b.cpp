@@ -74,29 +74,29 @@ template<class T> inline bool int_chk(T n) {
 int cnt = 0;
 
 void dfs(int idx, VEC2<int> &G, VEC<int> &d, VEC<int> &f, VEC<int> &visited) {
-  if(visited[idx] == 2) return;
-  visited[idx]++;  // 到達済み、探索未完了
-  cnt++;
-  d[idx] = cnt;  // 到達時刻を代入
+  if(visited[idx] == 2) return;  // 探索済みならスルー
+  
+  visited[idx]++;                // 到達済み、探索未完了
+  d[idx] = ++cnt;                // 到達時刻を代入
 
   REP(i, G[idx].size()) {
-    if(visited[G[idx][i]] == 2) continue;  // 隣接頂点が探索済みならスキップ
+    int next = G[idx][i];
+    if(visited[next] == 2) continue;  // 隣接頂点が探索済みならスルー
 
-    if(visited[G[idx][i]] == 0) {        // 隣接頂点が未到達なら
-      dfs(G[idx][i], G, d, f, visited);  // 未到達の隣接頂点を探索
+    if(visited[next] == 0) {        // 隣接頂点が未到達なら
+      dfs(next, G, d, f, visited);  // 未到達の隣接頂点を探索
     }
   }
 
   visited[idx] = 2;  // 探索完了
-  cnt++;
-  f[idx] = cnt;  // 探索完了時刻を代入
+  f[idx] = ++cnt;    // 探索完了時刻を代入
 }
 
 void solve() {
   int n;  // n: 頂点数
   cin >> n;
   VEC2<int> G(n);
-  VEC<int> d(n), f(n), visited(n, 0);  // visited: 0: 未到達, 1: 到達済み,探索未完了, 2: 探索完了
+  VEC<int> d(n), f(n), visited(n, 0);  // visited: 0: 未到達, 1: 到達済み, 探索未完了, 2: 探索完了
   int u, k, v;
   REP(i, n) {  // グラフ入力
     cin >> u >> k;
@@ -108,7 +108,7 @@ void solve() {
     }
   }
 
-  REP(i, n) dfs(i, G, d, f, visited);  // 根が複数存在する可能性も有り
+  REP(i, n) dfs(i, G, d, f, visited);  // 始点(根?)が複数存在する可能性も有り
 
   REP(i, n) cout << i + 1 << " " << d[i] << " " << f[i] << en;
 }
