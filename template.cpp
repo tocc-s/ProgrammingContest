@@ -15,10 +15,10 @@ template<class T> using P = pair<T, T>;
 template<class T> using VEC = vector<T>;
 template<class T> using VEC2 = vector<vector<T>>;
 template<class T> using PQ = priority_queue<T>;
-template<class T> using RPQ = priority_queue<T, vector<T>, greater<T>>;
-#define REP(i, m, n) for(int i = m; i < n; i++)
-#define REPE(i, m, n) for(int i = m; i <= n; i++)
-#define REPR(i, m, n) for(int i = m; i >= n; i--)
+template<class T> using PQR = priority_queue<T, vector<T>, greater<T>>;
+#define REP(i, m, n) for(int i = m; i < (int)(n); i++)
+#define REPE(i, m, n) for(int i = m; i <= (int)(n); i++)
+#define REPR(i, m, n) for(int i = m; i >= (int)(n); i--)
 #define FORR(itr, dict) for(auto &itr : dict)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
