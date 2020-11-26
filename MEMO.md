@@ -2,7 +2,7 @@
 
 ## 考察
  > [**ABC174 / C - Repsept**](https://atcoder.jp/contests/abc174/tasks/abc174_c)
- - 余りが同じであれば同じ数とみなせる。
+ - 余りが同じであれば似たような数とみなす。
  - mod (合同式) を上手く使う。
 ##  
  > [**ABC174 / E - Logs**](https://atcoder.jp/contests/abc174/tasks/abc174_e)
