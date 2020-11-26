@@ -31,7 +31,7 @@ class UnionFind {
     y = find(y);
     if(x == y) return false;  // 根が既に同じ
 
-    /* 通常 */
+    /* 基本 */
     if(par[x] > par[y]) swap(x, y);
     par[x] = y;
 
