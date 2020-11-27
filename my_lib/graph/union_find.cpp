@@ -1,4 +1,4 @@
-// UnionFind
+/* UnionFind */
 class UnionFind {
  public:
   vector<int> par;
