@@ -20,7 +20,7 @@ template<class T> using PQR = priority_queue<T, vector<T>, greater<T>>;
 #define REPE(i, m, n) for(int i = m; i <= (int)(n); i++)
 #define REPR(i, m, n) for(int i = m; i >= (int)(n); i--)
 #define FORR(itr, dict) for(auto &itr : dict)
-#define ALL(now) now.begin(), now.end()
+#define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
 #define en '\n'
 constexpr LL LLINF = LLONG_MAX;
@@ -69,49 +69,72 @@ template<class T> inline bool int_chk(T n) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* ダイクストラ法 */
-void dijkstra(int start, const VEC2<P<int>> G, VEC<int> &dist) {
-  PQR<P<int>> que;  // pair.first: スタート地点からの最短距離 | pair.second: 頂点番号
-  fill(ALL(dist), IINF);
-  dist[start] = 0;
-  que.push(make_pair(0, start));  // 頂点番号0(スタート地点)を格納
+class Dijkstra {
+ private:
+  struct Edge {
+    int next, cost;
+  };
+  VEC2<Edge> G;
 
-  while(!que.empty()) {
-    P<int> p = que.top();
-    que.pop();
-    int now = p.second;
-    if(dist[now] < p.first) continue;  // 探索中の頂点の最短距離が既にあればスルー
+ public:
+  VEC<int> dist;
+  Dijkstra(int n) {
+    G.resize(n);
+    dist.resize(n);
+  }
 
-    for(int i = 0; i < G[now].size(); i++) {  // 現地点との隣接頂点を調べる
-      int next = G[now][i].first;             // 隣接頂点番号
-      int cost = G[now][i].second;            // 隣接頂点番号への辺の重み
+  void undirected_edge(int now, int next, int cost) {  // 無向辺作成
+    G[now].emplace_back(Edge{next, cost});
+    G[next].emplace_back(Edge{now, cost});
+  }
+  void directed_edge(int now, int next, int cost) {  // 有向辺作成
+    G[now].emplace_back(Edge{next, cost});
+  }
 
-      if(dist[next] > dist[now] + cost) {  // 隣接頂点が未探索の場合
-        dist[next] = dist[now] + cost;  // スタート地点から現地点までの重み、隣接頂点への重みを代入
-        que.push(make_pair(dist[next], next));  // 隣接頂点を探索するための準備
+  void shortest_path(int start) {
+    /* 最短距離の昇順で優先度キューを作成 */
+    PQR<P<int>> que;  // pair.first: スタート地点からの最短距離 | pair.second: 頂点番号
+    fill(ALL(dist), IINF);
+    dist[start] = 0;
+    que.push(make_pair(0, start));  // スタート地点を格納
+
+    while(!que.empty()) {
+      P<int> p = que.top();
+      que.pop();
+      int now = p.second;
+      if(dist[now] < p.first) continue;  // 探索中の頂点の最短距離が既にあればスルー
+
+      for(int i = 0; i < G[now].size(); i++) {  // 現地点との隣接頂点を調べる
+        int next = G[now][i].next;              // 隣接頂点番号
+        int cost = G[now][i].cost;              // 隣接頂点への辺の重み
+
+        if(dist[next] > dist[now] + cost) {  // 隣接頂点が未探索の場合
+          dist[next] = dist[now] + cost;  // 現地点までの重み、隣接頂点への重みを代入
+          que.push(make_pair(dist[next], next));  // 隣接頂点を探索するための準備
+        }
       }
     }
   }
-}
+};
 
 void solve() {
-  int n;  // n: 頂点数
-  cin >> n;
-  VEC2<P<int>> G(n);  // pair.first: 隣接頂点番号 | pair.second: 隣接頂点への辺の重み
-  VEC<int> dist(n);  // dist[start = 0] から dist[頂点番号] への最短距離を格納する配列
+  int v, e, r;
+  cin >> v >> e >> r;
+  Dijkstra G(v);
 
-  /* u: 頂点番号 | k: u からの出次数 | v: u に隣接する頂点番号 | c: u と v を繋ぐ辺の重み */
-  int u, k, v, c;
-  REP(i, 0, n) {
-    cin >> u >> k;
-    REP(j, 0, k) {
-      cin >> v >> c;
-      G[u].emplace_back(make_pair(v, c));
-    }
+  int s, t, d;
+  REP(i, 0, e) {
+    cin >> s >> t >> d;
+    G.directed_edge(s, t, d);  // 有向辺追加
   }
 
-  dijkstra(0, G, dist);  // 探索開始
+  G.shortest_path(r);  // 最短経路探索
 
-  REP(i, 0, n) cout << i << " " << dist[i] << en;
+  REP(i, 0, v) {
+    if(G.dist[i] == IINF) CO("INF");
+    else
+      CO(G.dist[i]);
+  }
 }
 
 int main() {
