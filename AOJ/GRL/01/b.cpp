@@ -84,11 +84,6 @@ class Bellman_Ford {
     dist.resize(n, IINF);
   }
 
-  void undirected_edge(int from, int to, int cost) {  // 無向辺作成
-    edge.emplace_back(Edge{from, to, cost});
-    edge.emplace_back(Edge{to, from, cost});
-    e += 2;
-  }
   void directed_edge(int from, int to, int cost) {  // 有向辺作成
     edge.emplace_back(Edge{from, to, cost});
     e++;
