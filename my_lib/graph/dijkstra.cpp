@@ -77,20 +77,24 @@ class Dijkstra {
   VEC2<Edge> G;
 
  public:
-  VEC<int> dist;
+  VEC<int> dist;  // 最短距離
+  VEC<int> prev;  // 経路保持
+  VEC<int> path;  // 最短経路
   Dijkstra(int n) {
     G.resize(n);
     dist.resize(n);
+    prev.resize(n, -1);
   }
 
-  void undirected_edge(int now, int next, int cost) {  // 無向辺作成
+  /* 無向辺作成 */
+  void undirected_edge(int now, int next, int cost) {
     G[now].emplace_back(Edge{next, cost});
     G[next].emplace_back(Edge{now, cost});
   }
-  void directed_edge(int now, int next, int cost) {  // 有向辺作成
-    G[now].emplace_back(Edge{next, cost});
-  }
+  /* 有向辺作成 */
+  void directed_edge(int now, int next, int cost) { G[now].emplace_back(Edge{next, cost}); }
 
+  /* 最短経路探索 */
   void shortest_path(int start) {
     /* 最短距離の昇順で優先度キューを作成 */
     PQR<P<int>> que;  // pair.first: スタート地点からの最短距離 | pair.second: 頂点番号
@@ -102,7 +106,7 @@ class Dijkstra {
       P<int> p = que.top();
       que.pop();
       int now = p.second;
-      if(dist[now] < p.first) continue;  // 探索中の頂点の最短距離が既にあればスルー
+      if(dist[now] < p.first) continue;  // 探索中の頂点の距離の方が遠ければスルー
 
       for(int i = 0; i < G[now].size(); i++) {  // 現地点との隣接頂点を調べる
         int next = G[now][i].next;              // 隣接頂点番号
@@ -110,10 +114,28 @@ class Dijkstra {
 
         if(dist[next] > dist[now] + cost) {  // 隣接頂点が未探索の場合
           dist[next] = dist[now] + cost;  // 現地点までの重み、隣接頂点への重みを代入
+          prev[next] = now;
           que.push(make_pair(dist[next], next));  // 隣接頂点を探索するための準備
         }
       }
     }
+  }
+
+  /* 経路復元 */
+  VEC<int> get_path(int goal) {
+    for(int point = goal; point != -1; point = prev[point]) {
+      path.emplace_back(point);
+    }
+    reverse(ALL(path));
+    return path;
+  }
+
+  /* 到達判定 */
+  bool is_reach(int start) {
+    REP(i, 0, path.size()) {
+      if(path[i] == start) return true;
+    }
+    return false;
   }
 };
 
@@ -121,6 +143,7 @@ void solve() {
   int v, e, r;
   cin >> v >> e >> r;
   Dijkstra G(v);
+  VEC<int> path;
 
   int s, t, d;
   REP(i, 0, e) {
@@ -129,11 +152,23 @@ void solve() {
   }
 
   G.shortest_path(r);  // 最短経路探索
-
   REP(i, 0, v) {
     if(G.dist[i] == IINF) CO("INF");
     else
       CO(G.dist[i]);
+  }
+
+  /* 経路復元 */
+  path = G.get_path(v - 1);
+  cout << "---shortest Path---" << en;
+  if(G.is_reach(r)) {
+    REP(i, 0, path.size()) {
+      CON(path[i]);
+      if(i != path.size() - 1) CON(" -> ");
+    }
+    CO();
+  } else {
+    CO("NOT EXIST");
   }
 }
 
