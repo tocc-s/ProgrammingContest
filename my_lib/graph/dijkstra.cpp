@@ -161,13 +161,13 @@ void solve() {
   /* 経路復元 */
   path = G.get_path(v - 1);
   cout << "---shortest Path---" << en;
-  if(G.is_reach(r)) {
+  if(G.is_reach(r)) {  // 到達可能であれば(引数: スタート地点)
     REP(i, 0, path.size()) {
       CON(path[i]);
       if(i != path.size() - 1) CON(" -> ");
     }
     CO();
-  } else {
+  } else {  // 到達不可能
     CO("NOT EXIST");
   }
 }

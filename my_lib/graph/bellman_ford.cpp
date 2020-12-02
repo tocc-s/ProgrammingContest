@@ -80,6 +80,7 @@ class Bellman_Ford {
  public:
   VEC<int> dist;  // 距離
   VEC<int> prev;  // 経路保持
+  VEC<int> path;  // 最短経路
   Bellman_Ford(int point_num) {
     n = point_num;
     dist.resize(n, IINF);
@@ -118,12 +119,19 @@ class Bellman_Ford {
 
   /* 経路復元 */
   VEC<int> get_path(int goal) {
-    VEC<int> path;
     for(int point = goal; point != -1; point = prev[point]) {
       path.emplace_back(point);
     }
     reverse(ALL(path));
     return path;
+  }
+
+  /* 到達判定 */
+  bool is_reach(int start) {
+    REP(i, 0, path.size()) {
+      if(path[i] == start) return true;
+    }
+    return false;
   }
 };
 
@@ -154,11 +162,15 @@ void solve() {
   /* 経路復元 */
   path = G.get_path(v - 1);
   cout << "---shortest Path---" << en;
-  REP(i, 0, path.size()) {
-    CON(path[i]);
-    if(i != path.size() - 1) CON(" -> ");
+  if(G.is_reach(r)) {  // 到達可能であれば(引数: スタート地点)
+    REP(i, 0, path.size()) {
+      CON(path[i]);
+      if(i != path.size() - 1) CON(" -> ");
+    }
+    CO();
+  } else {  // 到達不可能
+    CO("NOT EXIST");
   }
-  CO();
 }
 
 int main() {
