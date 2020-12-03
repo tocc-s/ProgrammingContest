@@ -73,16 +73,21 @@ class Warshall_Floyd {
   int n;
 
  public:
-  VEC2<int> dist;
+  VEC2<int> dist, prev;
+  VEC<int> path;
   Warshall_Floyd(int point_num) {
     n = point_num;
     dist = VEC2<int>(n, VEC<int>(n, IINF));
+    prev = VEC2<int>(n, VEC<int>(n));
+    REP(i, 0, n) {
+      REP(j, 0, n) { prev[i][j] = i; }
+    }
   }
 
-  void directed_edge(int from, int to, int cost) {  // 有向辺作成
-    dist[from][to] = cost;
-  }
+  /* 有向辺作成 */
+  void directed_edge(int from, int to, int cost) { dist[from][to] = cost; }
 
+  /* 最短経路探索 */
   bool shortest_path() {
     REP(start, 0, n) dist[start][start] = 0;  // 始点の距離は 0
 
@@ -92,9 +97,31 @@ class Warshall_Floyd {
           if(dist[start][pass] == IINF || dist[pass][goal] == IINF) {  // 経路が存在しない
             continue;
           }
-          chmin(dist[start][goal], dist[start][pass] + dist[pass][goal]);  // 最短距離更新
+          /* 最短距離更新 */
+          if(chmin(dist[start][goal], dist[start][pass] + dist[pass][goal])) {
+            prev[start][goal] = prev[pass][goal];
+          }
         }
         if(dist[start][start] < 0) return true;  // 負閉路検出
+      }
+    }
+    return false;
+  }
+
+  /* 経路復元 */
+  VEC<int> get_path(int start, int goal) {
+    path.emplace_back(goal);
+    for(int now = goal; now != start; now = prev[start][now]) {
+      path.emplace_back(prev[start][now]);
+    }
+    reverse(ALL(path));
+    return path;
+  }
+
+  bool is_reach(int start) {
+    REP(i, 0, path.size()) {
+      if(path[i] == start) {
+        return true;
       }
     }
     return false;
@@ -105,6 +132,7 @@ void solve() {
   int v, e;
   cin >> v >> e;
   Warshall_Floyd G(v);
+  VEC<int> path;
 
   int s, t, d;
   REP(i, 0, e) {
@@ -124,6 +152,19 @@ void solve() {
       if(j != v - 1) CON(" ");
     }
     CO();
+  }
+
+  /* 経路復元 */
+  path = G.get_path(0, 2);
+  cout << en << "---shortest Path---" << en;
+  if(G.is_reach(0)) {  // 到達可能であれば(引数: スタート地点)
+    REP(i, 0, path.size()) {
+      CON(path[i]);
+      if(i != path.size() - 1) CON(" -> ");
+    }
+    CO();
+  } else {  // 到達不可能
+    CO("NOT EXIST");
   }
 }
 
