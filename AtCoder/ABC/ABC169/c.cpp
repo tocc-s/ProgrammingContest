@@ -47,6 +47,6 @@ int main() {
   double b;
   cin >> a >> b;
 
-  long double ans = floor(a * b);
+  long double ans = a * b;
   CO((LL)ans);
 }
