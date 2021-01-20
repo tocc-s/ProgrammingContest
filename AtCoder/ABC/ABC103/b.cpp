@@ -71,11 +71,21 @@ template<class T> inline bool int_chk(T n) {
 void solve() {
   string s, t;
   cin >> s >> t;
+  int len = s.size();
+  VEC<char> cmp;
+  REP(i, 0, len) cmp.emplace_back(s[i]);
 
-  queue<char> cmp;
-  REP(i, 0, s.size()) { cmp.push(s[i]); }
-
-  
+  REP(i, 0, len) {
+    string tmp(ALL(cmp));
+    if(t == tmp) {
+      CO("Yes");
+      return;
+    } else {
+      cmp.emplace_back(cmp[0]);
+      cmp.erase(cmp.begin());
+    }
+  }
+  CO("No");
 }
 
 int main() {
