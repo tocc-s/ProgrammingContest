@@ -25,7 +25,7 @@ int main() {
   for (int bit = 0; bit < (1 << n); bit++) {
     int sum = 0;
     for (int i = 0; i < n; i++) {
-      // iを2進数表記で表した時、j番目にbitが立っていたら
+      // bitを2進数表記で表した時、i番目にbitが立っていたら
       if (bit & (1 << i)) sum += a[i];
     }
 
