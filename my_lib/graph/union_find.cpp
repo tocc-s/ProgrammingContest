@@ -1,7 +1,7 @@
 /* UnionFind */
 class UnionFind {
  public:
-  vector<int> par;
+  vector<int> par;  // 所属している木の根を格納
   // vector<int> rank; // 木の高さ
   // vector<int> size; // 木の要素数
 
