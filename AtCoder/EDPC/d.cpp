@@ -78,7 +78,7 @@ void solve() {
   REP(i, 0, n) cin >> w[i] >> v[i];
 
   VEC2<LL> dp(n + 10, VEC<LL>(w_max + 10));
-  REP(i, 0, w_max) dp[0][i] = 0;
+  REPE(i, 0, w_max) dp[0][i] = 0;
 
   REP(i, 0, n) {         // i : 荷物の順番
     REPE(j, 0, w_max) {  // j : ナップザックに入る容量
