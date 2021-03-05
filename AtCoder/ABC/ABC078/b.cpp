@@ -1,6 +1,7 @@
 #pragma region Template
 #pragma region Includes
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 #pragma endregion Includes
 #pragma region Setting
@@ -20,6 +21,7 @@ template<class T> using PQR = priority_queue<T, vector<T>, greater<T>>;
 #define REPE(i, m, n) for(int i = m; i <= (int)(n); i++)
 #define REPR(i, m, n) for(int i = m; i >= (int)(n); i--)
 #define FORR(itr, dict) for(auto &itr : dict)
+#define REPBIT(n) for(int bit = 0; bit < (1 << (int)(n)); bit++)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
 #define en '\n'
@@ -66,20 +68,31 @@ template<class T> inline bool int_chk(T n) {
 }
 #pragma endregion Functions
 #pragma endregion Template
+/* update 2021/02/17 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
   int x, y, z;
   cin >> x >> y >> z;
+  int tmp = x - 2 * z;
 
-  int cnt = -IINF;
-  int i = 1;
-  while(i <= x) {
-    chmax(cnt, (y * i) + (z * (i + 1)));
-    i++;
+  int ans = 0;
+  REPE(i, 1, 1e5) {
+    int sub;
+    if(i == 1) {
+      sub = tmp - y * i;
+    } else {
+      sub = tmp - y * i;
+      sub -= (i - 1) * z;
+    }
+
+    if(sub < 0) {
+      break;
+    } else {
+      ans = i;
+    }
   }
-
-  CO(cnt);
+  CO(ans);
 }
 
 int main() {
