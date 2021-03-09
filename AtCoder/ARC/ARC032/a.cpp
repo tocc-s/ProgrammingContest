@@ -72,11 +72,9 @@ template<class T> inline bool int_chk(T n) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int calc(int n) {
-  if(n == 1 || n == 2) return 0;
-  REP(i, 2, n) {
-    if(n % i == 0) {
-      return 0;
-    }
+  if(n == 1) return 0;
+  for(LL i = 2; i * i <= n; i++) {
+    if(n % i == 0) return 0;
   }
   return 1;
 }
