@@ -21,6 +21,7 @@ template<class T> using PQR = priority_queue<T, vector<T>, greater<T>>;
 #define REPE(i, m, n) for(int i = m; i <= (int)(n); i++)
 #define REPR(i, m, n) for(int i = m; i >= (int)(n); i--)
 #define FORR(itr, dict) for(auto &itr : dict)
+#define REPBIT(n) for(int bit = 0; bit < (1 << (int)(n)); bit++)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
 #define en '\n'
@@ -67,23 +68,41 @@ template<class T> inline bool int_chk(T n) {
 }
 #pragma endregion Functions
 #pragma endregion Template
+/* update 2021/02/17 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
   string s;
   cin >> s;
-  char cmp[2];
-  cmp[0] = s[0];
-  cmp[1] = s[1];
+  reverse(ALL(s));
 
-  int cnt = 2;
-  for(int i = 2; i < s.size(); i += 2) {
-    if(s[i] == cmp[0] && s[i + 1] == cmp[1]) cnt += 2;
-    else
-      break;
+  int ans = 0, size = s.size();
+  REP(i, 0, s.size()) {
+    if(!i) {
+      size--;
+      continue;
+    }
+    if(size % 2 != 0) {
+      size--;
+      continue;
+    }
+
+    bool flag = true;
+    REP(j, i, i + size / 2) {
+      // CO(s[j]);
+      // CO(s[size / 2 + j]);
+      if(s[j] != s[size / 2 + j]) {
+        flag = false;
+        // CO("break");
+        break;
+      }
+    }
+    if(flag) {
+      CO(size);
+      return;
+    }
+    size--;
   }
-
-  CO(cnt);
 }
 
 int main() {
