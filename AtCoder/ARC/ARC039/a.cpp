@@ -72,35 +72,51 @@ template<class T> inline bool int_chk(T n) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
-  string a, b;
+  string a, b, as, bs;
   cin >> a >> b;
+  as = a;
+  bs = b;
 
-  if(a != "999") {
-    REP(i, 0, 3) {
-      if(a[i] != '9') {
-        a[i] = '9';
-        break;
+  int ans = -IINF, a_tmp, b_tmp;
+  a_tmp = stoi(a);
+  b_tmp = stoi(b);
+  chmax(ans, a_tmp - b_tmp);
+  a = as;
+  b = bs;
+
+  REP(i, 0, 3) {
+    a[i] = '9';
+
+    a_tmp = stoi(a);
+    b_tmp = stoi(b);
+    chmax(ans, a_tmp - b_tmp);
+    a = as;
+    b = bs;
+  }
+  REP(i, 0, 3) {
+    if(!i) {
+      if(b[0] != '1') {
+        b[0] = '1';
+
+        a_tmp = stoi(a);
+        b_tmp = stoi(b);
+        chmax(ans, a_tmp - b_tmp);
+        a = as;
+        b = bs;
       }
-    }
-  } else {
-    REP(i, 0, 3) {
-      if(!i) {
-        if(b[0] != '1') {
-          b[0] = '1';
-          break;
-        }
-      } else {
-        if(b[i] != '0') {
-          b[i] = '0';
-          break;
-        }
+    } else {
+      if(b[i] != '0') {
+        b[i] = '0';
+
+        a_tmp = stoi(a);
+        b_tmp = stoi(b);
+        chmax(ans, a_tmp - b_tmp);
+        a = as;
+        b = bs;
       }
     }
   }
-  int a_tmp, b_tmp;
-  a_tmp = stoi(a);
-  b_tmp = stoi(b);
-  CO(a_tmp - b_tmp);
+  CO(ans);
 }
 
 int main() {
