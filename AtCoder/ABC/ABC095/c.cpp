@@ -1,6 +1,7 @@
 #pragma region Template
 #pragma region Includes
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 #pragma endregion Includes
 #pragma region Setting
@@ -15,14 +16,12 @@ template<class T> using P = pair<T, T>;
 template<class T> using VEC = vector<T>;
 template<class T> using VEC2 = vector<vector<T>>;
 template<class T> using PQ = priority_queue<T>;
-template<class T> using RPQ = priority_queue<T, vector<T>, greater<T>>;
-#define REP(i, n) for(int i = 0; i < n; i++)
-#define REPE(i, n) for(int i = 0; i <= n; i++)
-#define REPR(i, n) for(int i = n; i >= 0; i--)
-#define FOR(i, m, n) for(int i = m; i < n; i++)
-#define FORE(i, m, n) for(int i = m; i <= n; i++)
-#define FREV(i, m, n) for(int i = m; i >= n; i--)
+template<class T> using PQR = priority_queue<T, vector<T>, greater<T>>;
+#define REP(i, m, n) for(int i = m; i < (int)(n); i++)
+#define REPE(i, m, n) for(int i = m; i <= (int)(n); i++)
+#define REPR(i, m, n) for(int i = m; i >= (int)(n); i--)
 #define FORR(itr, dict) for(auto &itr : dict)
+#define REPBIT(n) for(int bit = 0; bit < (1 << (int)(n)); bit++)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
 #define en '\n'
@@ -69,25 +68,27 @@ template<class T> inline bool int_chk(T n) {
 }
 #pragma endregion Functions
 #pragma endregion Template
+/* update 2021/02/17 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
   int a, b, c, x, y;
   cin >> a >> b >> c >> x >> y;
+  int xy_min = min(x, y), xy_max = max(x, y);
   LL ans = LLINF, tmp;
-  if(c <= a && c <= b) {
-    ans = c * max(x, y) * 2;
-    CO(ans);
-    return;
-  }
 
-  REPE(i, x) {
-    REPE(j, y) {
-      tmp = i * a + j * b + max((x - i) * 2, (y - j) * 2) * c;
-      ans = min(ans, tmp);
-      // cout << i << " " << j << " " << en;
-    }
-  }
+  tmp = xy_max * c * 2;
+  chmin(ans, tmp);
+
+  tmp = xy_min * c * 2;
+  if(xy_min == x) tmp += (y - xy_min) * b;
+  else
+    tmp += (x - xy_min) * a;
+  chmin(ans, tmp);
+
+  tmp = a * x + b * y;
+  chmin(ans, tmp);
+
   CO(ans);
 }
 
