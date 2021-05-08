@@ -72,25 +72,13 @@ template<class T> inline bool int_chk(T n) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
-  int n;
-  cin >> n;
-  map<string, VEC<int>> dict;
-  string s_tmp;
-  int n_tmp;
-  REP(i, 0, n) {
-    cin >> s_tmp >> n_tmp;
-    dict[s_tmp].emplace_back(n_tmp);
-  }
-  CO();
+  int a, b;
+  cin >> a >> b;
 
-  for(auto itr : dict) {
-    sort(ALL(itr.second));
-  }
-
-  for(auto itr : dict) {
-    for(auto idx : itr.second) {
-      cout << itr.first << ' ' << idx << en;
-    }
+  if(a <= 8 && b <= 8) {
+    CO("Yay!");
+  } else {
+    CO(":(");
   }
 }
 
