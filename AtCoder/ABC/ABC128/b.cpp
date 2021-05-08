@@ -1,6 +1,7 @@
 #pragma region Template
 #pragma region Includes
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 #pragma endregion Includes
 #pragma region Setting
@@ -20,6 +21,7 @@ template<class T> using PQR = priority_queue<T, vector<T>, greater<T>>;
 #define REPE(i, m, n) for(int i = m; i <= (int)(n); i++)
 #define REPR(i, m, n) for(int i = m; i >= (int)(n); i--)
 #define FORR(itr, dict) for(auto &itr : dict)
+#define REPBIT(n) for(int bit = 0; bit < (1 << (int)(n)); bit++)
 #define ALL(v) v.begin(), v.end()
 #define SETPRE(n) cout << fixed << setprecision(n)
 #define en '\n'
@@ -66,26 +68,29 @@ template<class T> inline bool int_chk(T n) {
 }
 #pragma endregion Functions
 #pragma endregion Template
+/* update 2021/02/17 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
-  int n, p;
+  int n;
   cin >> n;
-  VEC<tuple<string, int, int>> v;
-
-  string s;
+  map<string, VEC<int>> dict;
+  string s_tmp;
+  int n_tmp;
   REP(i, 0, n) {
-    cin >> s >> p;
-    v.emplace_back(make_tuple(s, p, i + 1));
+    cin >> s_tmp >> n_tmp;
+    dict[s_tmp].emplace_back(n_tmp);
+  }
+  CO();
+
+  for(auto itr : dict) {
+    sort(ALL(itr.second));
   }
 
-  sort(ALL(v));
-
-  VEC<int> ans;
-  REP(i, 0, n) {
-    VEC<int> tmp_v;
-    int tmp;
-    tie(ignore, ignore, tmp) = v[i];
+  for(auto itr : dict) {
+    for(auto idx : itr.second) {
+      cout << itr.first << ' ' << idx << en;
+    }
   }
 }
 
