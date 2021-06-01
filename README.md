@@ -33,6 +33,10 @@
 ```
 - 実行 (TypeScript)
 ```
+  ts-node [name].ts
+```
+- コンパイル (TypeScript -> JavaScript)
+```
   tsc [name].ts
 ```
 - 基本的にAtCoderやAOJなどの参加コンテスト、過去問を解いてから追加。
