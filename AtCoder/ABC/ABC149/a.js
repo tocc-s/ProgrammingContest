@@ -1,37 +1,9 @@
-"use struct";
+"use strict";
 
-/* Input */
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
-let reader = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+function main(input) {
+  input = input.trim().split(" ");
+  const ans = input[1] + input[0];
 
-/* solve */
-// let lines = [];
-// reader.on('line', (line) => {
-//   lines.push(line.split(" "));
-// });
-// reader.on('close', () => {
-//   console.log(lines[0][1] + lines[0][0]);
-// });
-
-let str = "";
-
-function solve() {
-  let ret = str.split(" ");
-  
-  /* おまけ: 数値変換 */
-  // ret = ret.map((i) => Number(i));
-
-  return ret[1] + ret[0];
+  console.log(ans);
 }
-
-reader.on("line", (line) => {
-  str = line;
-});
-
-reader.on("close", () => {
-  console.log(solve(str));
-});
+main(require('fs').readFileSync('/dev/stdin', 'utf8'));
