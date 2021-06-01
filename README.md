@@ -13,6 +13,8 @@
 
 ## 使用言語
 - C++
+- JavaScript (Node.js)
+- TypeScript
 
 後々別の言語でも解いてみるかも。
 
@@ -21,9 +23,17 @@
 ```
   g++ -std=c++17 [name].cpp -o [name]
 ```
-- 実行
+- 実行 (g++)
 ```
   ./[name]
+```
+- 実行 (JavaScript node)
+```
+  node [name].js
+```
+- 実行 (TypeScript)
+```
+  tsc [name].ts
 ```
 - 基本的にAtCoderやAOJなどの参加コンテスト、過去問を解いてから追加。
 - 参加中のコンテストはコンテスト終了後に追加。
@@ -34,3 +44,6 @@
 - VSCode
 - g++
 - C++ 17
+- Node.js (v14.17.0)
+- npm (v3.5.2)
+- tsc (v4.3.2)
