@@ -6,3 +6,4 @@ problem.exe
 problem.in
 *_prac*
 *.log
+/node_modules
