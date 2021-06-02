@@ -1,16 +1,19 @@
 import * as fs from "fs";
 
+/* Function */
+/*-----------------------------------------------------------*/
 function Input(): string[] {
-  const ret: string[] = fs.readFileSync("/dev/stdin", "utf8").split("\n");
-  return ret;
+  return fs.readFileSync("/dev/stdin", "utf8").split("\n");
 }
+/*-----------------------------------------------------------*/
 
+/* Main */
+/*-----------------------------------------------------------*/
 function Main(): void {
-  // const tmp: number[] = Input().map(Number);
-  const tmp: string[] = Input();
-  const ans = tmp;
+  const arg: string[] = Input();
+  const ans = arg[0].split(" ").map(Number);
 
   console.log(ans);
 }
-
 Main()
+/*-----------------------------------------------------------*/
