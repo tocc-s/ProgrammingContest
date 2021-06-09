@@ -15,6 +15,7 @@
 - C++
 - JavaScript (Node.js)
 - TypeScript
+- Python3
 
 後々別の言語でも解いてみるかも。
 
@@ -39,15 +40,24 @@
 ```
   tsc [name].ts
 ```
+- 実行 (Python3)
+```
+  python3 [name].py
+```
 - 基本的にAtCoderやAOJなどの参加コンテスト、過去問を解いてから追加。
 - 参加中のコンテストはコンテスト終了後に追加。
 - 他にもアルゴリズム学習に関する問題もメモとして追加する予定。
 
 ## 環境
-- WSL (Ubuntu)
+- WSL2 (Ubuntu 18.04) ~~(Ubuntu 16.04)~~
 - VSCode
 - g++
 - C++ 17
 - Node.js (v14.17.0)
-- npm (v3.5.2)
+- npm (6.14.13) ~~(3.5.2)~~
+  - Ubuntuを18.04にアプデしたら変わってた
 - tsc (v4.3.2)
+- Python3 (3.6.9) ~~(3.5.2)~~
+  - Ubuntuを18.04にアプデしたら変わってた
+- pip 21.1.2
+  - 多分pip3
