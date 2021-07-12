@@ -78,11 +78,7 @@ void solve() {
   REP(i, 0, n) cin >> a[i];
 
   REP(i, 0, n) {
-<<<<<<< HEAD
     if(i % 2 != 0) {
-=======
-    if(i % 2 == 0) {
->>>>>>> e9274510f443c876f5f1be4793a5c724a139122b
       x -= a[i] - 1;
     } else {
       x -= a[i];
